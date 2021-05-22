@@ -2,6 +2,7 @@ import { SyntheticEvent, useState } from 'react';
 import { Label, Button, Item, Segment } from 'semantic-ui-react';
 import { useStore } from '../../../app/stores/store';
 import { observer } from 'mobx-react-lite';
+import { Link } from 'react-router-dom';
 
 interface Props {}
 
@@ -35,9 +36,8 @@ const ActivityList: React.FC<Props> = () => {
               </Item.Description>
               <Item.Extra>
                 <Button
-                  onClick={() => {
-                    activityStore.selectActivity(activity.id);
-                  }}
+                  as={Link}
+                  to={`/activities/${activity.id}`}
                   floated="right"
                   content="View"
                   color="blue"
