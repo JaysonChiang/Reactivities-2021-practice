@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
-import { Button, Card, Image } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { useStore } from '../../../app/stores/store';
 import { observer } from 'mobx-react-lite';
-import { Link } from 'react-router-dom';
+import ActivityDetailedHeader from './ActivityDetailedHeader';
+import ActivityDetailedInfo from './ActivityDetailedInfo';
+import ActivityDetailedChat from './ActivityDetailedChat';
+import ActivityDetailedSidebar from './ActivityDetailedSidebar';
 
 interface Props {}
 
@@ -28,6 +31,17 @@ const ActivityDetails: React.FC<Props> = () => {
   }
 
   return (
+    <Grid>
+      <Grid.Column width={10}>
+        <ActivityDetailedHeader activity={activity}/>
+        <ActivityDetailedInfo activity={activity}/>
+        <ActivityDetailedChat />
+      </Grid.Column>
+      <Grid.Column width={6}>
+        <ActivityDetailedSidebar />
+      </Grid.Column>
+    </Grid>
+    /*
     <Card fluid>
       <Image src={`/assets/categoryImages/${activity.category}.jpg`} />
       <Card.Content>
@@ -44,6 +58,7 @@ const ActivityDetails: React.FC<Props> = () => {
         </Button.Group>
       </Card.Content>
     </Card>
+    */
   );
 };
 
